@@ -34,7 +34,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZn0Rq-KnNDnMhQrKWg53Qk06K3aA9UpeA0A&usqp=CAU" type="image/gif" sizes="16x16"> 
 	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
 	<!-- //google fonts -->
-	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -421,7 +421,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="contact-form">
 			<div class="row">
 				<div class="col-lg-12">
-					<form name="contactform" id="contactform" method="post" action="#" onsubmit="return(validate());" novalidate="novalidate">
+					<form name="contactform" id="submit-form" action="">
 						<div class="row">
 							<div class="form-group col-md-6 ">
 							  <label>Name</label>
@@ -502,5 +502,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!-- move top -->
 
+<script>
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbx9QWVNlBf8E2DMnMfjHMuWQy02aN12vlAw9dY5HdSQ1PYpbi51yDywaUBHpwa9c4qA/exec",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>	
+	
 </body>
 </html>
